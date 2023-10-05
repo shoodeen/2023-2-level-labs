@@ -13,8 +13,8 @@ def tokenize(text: str) -> list[str] | None:
     """
     if not isinstance(text, str):
         return None
-    punctuation = '!@#$%^&*()-_+=[{]};:\'"<>/?,.\\|/1234567890~`¬'
-    text_no_punctuation = ''.join(char for char in text if char not in punctuation).lower()
+    punctuation_and_digitals = '!@#$%^&*()-_+=[{]};:\'"<>/?,.\\|/1234567890~`¬'
+    text_no_punctuation = ''.join(char for char in text if char not in punctuation_and_digitals).lower()
     tokens = [char for char in text_no_punctuation if char.isalpha()]
     return tokens
 
@@ -38,9 +38,6 @@ def calculate_frequencies(tokens: list[str] | None) -> dict[str, float] | None:
         for token, frequency in token_frequencies.items():
             token_frequencies[token] = frequency / total_tokens
         return token_frequencies
-    else:
-        return None
-
 
 
 def create_language_profile(language: str, text: str) -> dict[str, str | dict[str, float]] | None:
@@ -59,7 +56,6 @@ def create_language_profile(language: str, text: str) -> dict[str, str | dict[st
         "freq": token_frequencies
     }
     return language_profile
-
 
 
 def calculate_mse(predicted: list, actual: list) -> float | None:
