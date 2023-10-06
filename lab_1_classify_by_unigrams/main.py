@@ -28,8 +28,8 @@ def calculate_frequencies(tokens: list[str] | None) -> dict[str, float] | None:
         return None
     token_frequencies = {}
     for elements in tokens:
-        token_frequencies.update({round(tokens.count(elements)/len(tokens), 2): elements})
-    return token_frequencies
+        token_frequencies.update({elements: tokens.count(elements)/len(tokens)})
+        return token_frequencies
 
 
 def create_language_profile(language: str, text: str) -> dict[str, str | dict[str, float]] | None:
