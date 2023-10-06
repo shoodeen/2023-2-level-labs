@@ -53,7 +53,8 @@ def multiply_string(input_string: str, how_many: int) -> str:
     display the given string the number of times given in the `how_many`.
     """
     # student realisation goes here
-
+    format_string = input_string * how_many
+    print(format_string)
 
 # Function calls with expected result:
 # multiply_string('Hi', 2) → 'HiHi'
@@ -69,6 +70,8 @@ def front_times(input_string: str, how_many: int) -> str:
     and display them that many times as in `how_many`.
     """
     # student realisation goes here
+    result = input_string[0:3] * how_many
+    print(result)
 
 
 # Function calls with expected result:
@@ -86,8 +89,8 @@ def extra_end(input_string: str) -> str:
     Given the string, take its two last characters and display them three times.
     """
     # student realisation goes here
-
-
+    result = input_string[-2:] * 3
+    print(result)
 # Function calls with expected result:
 # extra_end('Hello') → 'lololo'
 # extra_end('ab') → 'ababab'
@@ -101,7 +104,8 @@ def make_abba(first_string: str, second_string: str) -> str:
     Given two strings, concatenate them as a reflection.
     """
     # student realisation goes here
-
+    result = first_string + second_string + second_string + first_string
+    print(result)
 
 # make_abba('Hi', 'Bye') → 'HiByeByeHi'
 # make_abba('Yo', 'Alice') → 'YoAliceAliceYo'
@@ -119,6 +123,12 @@ def reverse_word(sentence: str) -> str:
     Spaces will be included only when more than one word is present.
     """
     # student realisation goes here
+    word = sentence.split(" ")
+    for i in word:
+        if len(i) >= 5:
+            print(i[::-1], end=" ")
+        else:
+            print(i, end=" ")
 
 
 # reverse_word("Hey fellow warriors") == "Hey wollef sroirraw"
@@ -146,6 +156,10 @@ def generate_hashtag(input_string: str) -> str:
     ""                                        =>  false
     """
     # student realisation goes here
+
+
+
+
 
 
 # Task 7:
