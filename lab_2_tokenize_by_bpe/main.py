@@ -14,6 +14,15 @@ def prepare_word(
     :param end_of_word: a token that signifies the end of word
     :return: preprocessed word
     """
+    if not isinstance(raw_word, str) or not isinstance(start_of_word, str | None)\
+            or not isinstance(end_of_word, str | None):
+        return None
+    tokens = list(raw_word)
+    if start_of_word is not None:
+        tokens.insert(0, start_of_word)
+    if end_of_word is not None:
+        tokens.append(end_of_word)
+    return tuple(tokens)
 
 
 def collect_frequencies(
@@ -26,6 +35,16 @@ def collect_frequencies(
     :param end_of_word: a token that signifies the end of word
     :return: dictionary in the form of <preprocessed word: number of occurrences>
     """
+    if not isinstance(text, str) or not isinstance(start_of_word, str | None) \
+            or not isinstance(end_of_word, str):
+        return None
+    word_frequencies = {}
+    for word in text.split():
+        processed_word = prepare_word(word, start_of_word, end_of_word)
+        if processed_word is None:
+            return None
+        word_frequencies.update({processed_word: text.split().count(word)})
+    return word_frequencies
 
 
 def count_tokens_pairs(
@@ -36,6 +55,18 @@ def count_tokens_pairs(
     :param word_frequencies: dictionary in the form of <preprocessed word: number of occurrences>
     :return: dictionary in the form of <token pair: number of occurrences>
     """
+    if not isinstance(word_frequencies, dict):
+        return None
+    token_pairs_frequency = {}
+    for word, frequency in word_frequencies.items():
+        if len(word) >= 2:
+            for i in range(len(word) - 1):
+                token_pair = (word[i], word[i + 1])
+                if token_pair in token_pairs_frequency:
+                    token_pairs_frequency[token_pair] += frequency
+                else:
+                    token_pairs_frequency[token_pair] = frequency
+    return token_pairs_frequency
 
 
 def merge_tokens(
