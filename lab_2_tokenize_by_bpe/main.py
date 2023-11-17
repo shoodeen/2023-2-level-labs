@@ -83,14 +83,14 @@ def merge_tokens(
     updated_word_frequencies = {}
     united = ''.join(pair)
     for symbols in word_frequencies.keys():
-        new_symbol = list(symbols)
+        new_symbols = list(symbols)
         for i in range(len(symbols)-1):
             if (symbols[i], symbols[i+1]) == pair:
-                new_symbol[i] = united
-                new_symbol[i+1] = ''
-        if '' in new_symbol:
-            new_symbol.remove('')
-        updated_word_frequencies[tuple(new_symbol)] = word_frequencies[symbols]
+                new_symbols[i] = united
+                new_symbols[i+1] = ''
+        if '' in new_symbols:
+            new_symbols.remove('')
+        updated_word_frequencies[tuple(new_symbols)] = word_frequencies[symbols]
     return updated_word_frequencies
 
 
