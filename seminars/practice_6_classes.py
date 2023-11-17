@@ -12,7 +12,6 @@ counter = Counter('aasalksjdkslaks')
 print(counter.most_common())  # [('a', 4), ('s', 4), ('k', 3), ('l', 2), ('j', 1), ('d', 1)]
 print(counter.total())  # 15
 
-
 # what is 'Counter'? what is 'counter'? what are 'most_common' and 'total'?
 # =========================================================================
 
@@ -20,7 +19,6 @@ print(counter.total())  # 15
 #  1. Good practice for naming - CamelCase
 #  2. __init__ - method for instance creation
 #  3. all class methods receive 'self' as the first argument (with few exceptions)
-
 
 class MyClass:
     """
@@ -44,6 +42,7 @@ class IsThereInit:
 
 instance = IsThereInit()  # instance is created just fine (why?)
 
+
 # Pretty much everything is an instance of something in Python
 print(type(my_instance))  # <class '__main__.MyClass'>
 print(isinstance(my_instance, MyClass))  # True
@@ -54,7 +53,6 @@ print(isinstance('Well, it is a string', str))  # True
 print(type(MyClass))  # <class 'type'>
 print(type(str))  # <class 'type'>
 print(type(type))  # <class 'type'>
-
 
 # Even classes are instances of another class -- type
 #  =============================================================
@@ -95,11 +93,11 @@ class Animal:
 dog = Animal(name='Sharick', legs=4, scariness=8)
 print(dog.name, dog.legs, dog.scariness)  # Sharick 4 8
 # we do not pass self when calling a method!!!
-dog.introduce()  # Hello! My name is Sharick!
+dog.introduce()  #  Hello! My name is Sharick!
 
 spider = Animal('Spidy', 8, 225)  # Spidy 8 225
 print(spider.name, spider.legs, spider.scariness)
-spider.introduce()  # Hello! My name is Spidy!
+spider.introduce()  #  Hello! My name is Spidy!
 # spider.bad_practice_to_add_attribute_not_in_init()
 
 print(hasattr(dog, 'bad_practice'))  # False
@@ -168,7 +166,6 @@ class Student:
         print(f'Today I finished {self.assignments_done} assignments')
         self.sleep(5)
 
-
 student = Student()
 student.live_a_day()
 
@@ -176,12 +173,12 @@ student.live_a_day()
 
 print('*' * 15 + ' TASKS ' + '*' * 15)
 
-
 # Task 1
 # easy level
-class Deadline:
-    def __init__(self):
-        print('On, no! It is another deadline!')
+# class ...:
+#
+#     def __init__(...):
+#         ...
 
 # fill the gaps so that the next line prints: "Oh, no! It is another deadline!"
 # deadline = Deadline()
@@ -189,15 +186,11 @@ class Deadline:
 
 #  Task 2
 # easy level
-class Student:
-    def __init__(self, name, year):
-        self.name = name
-        self.year = year
-        print(f'Hello! My name is {name}, I`m in year {year}')
+# class ...:
+#
+#     def ...:
+#         ...
 
-
-student1 = Student('Marina', 1)
-student2 = Student('Nastya', 2)
 # fill the gaps so that the next lines print the corresponding messages
 # student1 = Student('Marina', 1)  # Hello! My name is Marina, I'm in year 1
 # student2 = Student('Nastya', 2)  # Hello! My name is Nastya, I'm in year 2
@@ -205,44 +198,29 @@ student2 = Student('Nastya', 2)
 
 # Task 3
 # easy level
-class Insect:
-    def __init__(self, name, legs):
-        self.name = name
-        self.legs = legs
+# class Insect:
+#
+#     def __init__(...):
+#         ...
+#
+#     def introduce(self):
+#         print(f'Hi! My name is {self.name} and I have {self.legs} legs')
 
-    def introduce(self):
-        print(f'Hi! My name is {self.name} and I have {self.legs} legs')
-
-
-bee = Insect('Bee', 6)
-bee.introduce()  # Hi! My name is Bee and I have 6 legs
-spider = Insect('Spider', 8)
-spider.introduce()  # Hi! My name is Spider and I have 8 legs
+# bee = Insect('Bee', 6)
+# bee.introduce()  # Hi! My name is Bee and I have 6 legs
+#
+# spider = Insect('Spider', 8)
+# spider.introduce()  # Hi! My name is Spider and I have 8 legs
 
 
 # Task 4
 # medium level
-class Student:
+# class Student:
 #     """
 #     If I have less than three deadlines, my mood is Good!
 #     If I have from 3 to 5 deadlines, my mood is So-so...
 #     If I have more than 5 deadlines, my mood is Bad!!!
 #     """
-    def __init__(self, deadlines):
-        self.deadlines = deadlines
-
-    def mood(self):
-        if self.deadlines < 3:
-            return "Good"
-        elif 3 <= self.deadlines < 5:
-            return "So-so"
-        else:
-            return "Bad"
-
-
-student = Student(2)
-print(student.mood())
-student.deadlines = 4
 
 
 # implement a class so that the following code works
@@ -255,19 +233,19 @@ student.deadlines = 4
 
 # Task 5
 # medium level
-class Square:
-    def __init__(self, side_length: float) -> None:
-        self.side_length = side_length
+# class Square:
+#
+#     def __init__(self, side_length: float) -> None:
+#         ...
+#
+#     def get_area(self) -> float:
+#         ...
+#
+#     def get_perimeter(self) -> float:
+#         ...
 
-    def get_area(self) -> float:
-        return self.side_length ** 2
-
-    def get_perimeter(self) -> float:
-        return self.side_length * 4
-
-
-square1 = Square(side_length=2)
-print(square1.get_area(), square1.get_perimeter())  # 4 8
+# square1 = Square(side_length=2)
+# print(square1.get_area(), square1.get_perimeter())  # 4 8
 #
 # square2 = Square(side_length=5.12)
 # print(square2.get_area(), square2.get_perimeter())  # 26.2144 20.48
@@ -281,18 +259,7 @@ print(square1.get_area(), square1.get_perimeter())  # 4 8
 # What methods should be present? What attributes should be added?
 # Create such a class and demonstrate its instantiating for at least two different subjects.
 
-class Discipline:
-    def __init__(self, name_subject: str, name_teacher: str, credits: int, hours: int, tasks: list[str]):
-        self.name_subject = name_subject
-        self.name_teacher = name_teacher
-        self.credits = credits
-        self.hours = hours
-        self.tasks = tasks
-
-    def subject_info(self):
-        print(f'Subject {self.name_subject} by {self.name_teacher} costs {self.credits} credits and longs {self.hours} and has these tasks: {self.tasks}')
-
-
+# class ???:
 #     """
 #     A class to represent a learning discipline studied in HSE
 #     """
